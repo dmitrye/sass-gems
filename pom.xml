@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>sass-gems</groupId>
+    <artifactId>sass-gems</artifactId>
+    <version>3.1.12</version>
+    <packaging>jar</packaging>
+
+    <scm>
+        <url>https://github.com/dmitrye/sass-gems</url>
+        <developerConnection>scm:git:git@github.com:dmitrye/sass-gems.git</developerConnection>
+    </scm>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>bin</directory>
+                <targetPath>/bin</targetPath>
+            </resource>
+            <resource>
+                <directory>cache</directory>
+                <targetPath>/cache</targetPath>
+            </resource>
+            <resource>
+                <directory>doc</directory>
+                <targetPath>/doc</targetPath>
+                <excludes><exclude>**/*</exclude></excludes>
+            </resource>
+            <resource>
+                <directory>gems</directory>
+                <targetPath>/gems</targetPath>
+            </resource>
+            <resource>
+                <directory>specifications</directory>
+                <targetPath>/specifications</targetPath>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-antrun-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>create-empty-directory</id>
+                  <phase>process-classes</phase>
+                  <goals>
+                    <goal>run</goal>
+                  </goals>
+                  <configuration>
+                    <tasks>
+                      <mkdir dir="${basedir}/target/classes/doc" />
+                    </tasks>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
