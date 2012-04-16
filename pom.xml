@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>sass-gems</groupId>
     <artifactId>sass-gems</artifactId>
-    <version>3.1.12</version>
+    <version>3.1.15</version>
     <packaging>jar</packaging>
 
     <scm>
         <url>https://github.com/dmitrye/sass-gems</url>
         <developerConnection>scm:git:git@github.com:dmitrye/sass-gems.git</developerConnection>
     </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jruby</groupId>
+            <artifactId>jruby-complete</artifactId>
+            <version>1.6.7</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <resources>
@@ -24,7 +33,9 @@
             <resource>
                 <directory>doc</directory>
                 <targetPath>/doc</targetPath>
-                <excludes><exclude>**/*</exclude></excludes>
+                <excludes>
+                    <exclude>**/*</exclude>
+                </excludes>
             </resource>
             <resource>
                 <directory>gems</directory>
@@ -37,22 +48,51 @@
         </resources>
         <plugins>
             <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-antrun-plugin</artifactId>
-              <executions>
-                <execution>
-                  <id>create-empty-directory</id>
-                  <phase>process-classes</phase>
-                  <goals>
-                    <goal>run</goal>
-                  </goals>
-                  <configuration>
-                    <tasks>
-                      <mkdir dir="${basedir}/target/classes/doc" />
-                    </tasks>
-                  </configuration>
-                </execution>
-              </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>download sass gem</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <exec executable="java">
+                                    <arg line=" -jar ./lib/jruby-complete-1.6.7.jar -S gem install -i . sass -v ${version} --no-rdoc --no-ri"/>
+                                </exec>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>create-empty-directory</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${basedir}/target/classes/doc"/>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <includes>
+                        <include>**/specifications/sass-${version}.gemspec</include>
+                        <include>**/gems/sass-${version}/*</include>
+                        <include>**/bin/*</include>
+                        <include>**/cache/sass-${version}.gem</include>
+                        <include>**/doc/*</include>
+                        <include>**/META-INF/*</include>
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
