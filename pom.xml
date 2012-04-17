@@ -94,8 +94,8 @@
                 <configuration>
                     <includes>
                         <include>**/specifications/sass-${version}.gemspec</include>
-                        <include>**/gems/sass-${version}/*</include>
-                        <include>**/bin/*</include>
+                        <include>**/gems/sass-${version}/**</include>
+                        <include>**/bin/**</include>
                         <include>**/cache/sass-${version}.gem</include>
                         <include>**/doc/*</include>
                         <include>**/META-INF/*</include>
