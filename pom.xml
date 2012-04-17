@@ -7,19 +7,26 @@
     <version>3.1.15</version>
     <packaging>jar</packaging>
 
+    <name>SASS Gems - Gem in a Jar for SASS</name>
+    <inceptionYear>2012</inceptionYear>
+    <url>https://github.com/dmitrye/sass-gems</url>
+
+    <description>
+        This is a repackaged GEM in a JAR format of the sass-lang.gem package. The sass-gems package version
+        follows the sass-lang.gem versions located http://rubyforge.org/frs/?group_id=9702. Simply change
+        the version of this package to download and repackage the same GEM version.
+    </description>
+
     <scm>
         <url>https://github.com/dmitrye/sass-gems</url>
         <developerConnection>scm:git:git@github.com:dmitrye/sass-gems.git</developerConnection>
+        <connection>scm:git:git@github.com:dmitrye/sass-gems.git</connection>
     </scm>
 
-
-    <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<groupId>org.jruby</groupId>-->
-            <!--<artifactId>jruby-complete</artifactId>-->
-            <!--<version>1.6.7</version>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/dmitrye/sass-gems/issues</url>
+    </issueManagement>
 
     <build>
         <resources>
