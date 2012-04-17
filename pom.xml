@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>sass-gems</groupId>
+    <groupId>n4u.sass</groupId>
     <artifactId>sass-gems</artifactId>
     <version>3.1.15</version>
     <packaging>jar</packaging>
@@ -12,13 +12,14 @@
         <developerConnection>scm:git:git@github.com:dmitrye/sass-gems.git</developerConnection>
     </scm>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.jruby</groupId>
-            <artifactId>jruby-complete</artifactId>
-            <version>1.6.7</version>
-        </dependency>
-    </dependencies>
+
+    <!--<dependencies>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jruby</groupId>-->
+            <!--<artifactId>jruby-complete</artifactId>-->
+            <!--<version>1.6.7</version>-->
+        <!--</dependency>-->
+    <!--</dependencies>-->
 
     <build>
         <resources>
