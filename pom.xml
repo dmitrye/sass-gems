@@ -56,23 +56,26 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>org.jruby.plugins</groupId>
+                <artifactId>jruby-rake-plugin</artifactId>
+                <version>1.6.7</version>
+                <executions>
+                    <execution>
+                        <id>install gems</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>gem</goal>
+                        </goals>
+                        <configuration>
+                            <args>install -i . sass -v ${version} --no-rdoc --no-ri</args>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
-                    <execution>
-                        <id>download sass gem</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <tasks>
-                                <exec executable="java">
-                                    <arg line=" -jar ./lib/jruby-complete-1.6.7.jar -S gem install -i . sass -v ${version} --no-rdoc --no-ri"/>
-                                </exec>
-                            </tasks>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>create-empty-directory</id>
                         <phase>package</phase>
