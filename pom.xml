@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.n4u.sass</groupId>
     <artifactId>sass-gems</artifactId>
-    <version>3.1.15</version>
+    <version>3.1.16</version>
     <packaging>jar</packaging>
 
     <name>SASS Gems - Gem in a Jar for SASS</name>
