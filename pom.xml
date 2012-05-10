@@ -45,26 +45,26 @@
         <resources>
             <resource>
                 <directory>bin</directory>
-                <targetPath>/bin</targetPath>
+                <targetPath>./bin</targetPath>
             </resource>
             <resource>
                 <directory>cache</directory>
-                <targetPath>/cache</targetPath>
+                <targetPath>./cache</targetPath>
             </resource>
             <resource>
                 <directory>doc</directory>
-                <targetPath>/doc</targetPath>
+                <targetPath>./doc</targetPath>
                 <excludes>
                     <exclude>**/*</exclude>
                 </excludes>
             </resource>
             <resource>
                 <directory>gems</directory>
-                <targetPath>/gems</targetPath>
+                <targetPath>./gems</targetPath>
             </resource>
             <resource>
                 <directory>specifications</directory>
-                <targetPath>/specifications</targetPath>
+                <targetPath>./specifications</targetPath>
             </resource>
         </resources>
         <plugins>
@@ -80,7 +80,7 @@
                             <goal>gem</goal>
                         </goals>
                         <configuration>
-                            <args>install -i . sass -v ${version} --no-rdoc --no-ri</args>
+                            <args>install -i . sass -v ${project.version} --no-rdoc --no-ri</args>
                         </configuration>
                     </execution>
                 </executions>
@@ -109,10 +109,10 @@
                 <version>2.4</version>
                 <configuration>
                     <includes>
-                        <include>**/specifications/sass-${version}.gemspec</include>
-                        <include>**/gems/sass-${version}/**</include>
+                        <include>**/specifications/sass-${project.version}.gemspec</include>
+                        <include>**/gems/sass-${project.version}/**</include>
                         <include>**/bin/**</include>
-                        <include>**/cache/sass-${version}.gem</include>
+                        <include>**/cache/sass-${project.version}.gem</include>
                         <include>**/doc/*</include>
                         <include>**/META-INF/*</include>
                     </includes>
